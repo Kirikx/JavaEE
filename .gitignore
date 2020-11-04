@@ -1,2 +1,5 @@
-/JavaEE.iml
 /out
+/target
+/.idea
+*.iml
+/jee-servlet/jee-servlet.iml
