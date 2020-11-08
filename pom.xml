@@ -11,6 +11,9 @@
 
     <modules>
         <module>jee-servlet</module>
+        <module>home-works</module>
     </modules>
+
+
 
 </project>
