@@ -5,12 +5,12 @@
          version="4.0">
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
-        <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>ru.kirikomp.FirstServlet</servlet-class>
+        <servlet-name>ToDoServlet</servlet-name>
+        <servlet-class>ru.kirikomp.ToDoServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>FirstServlet</servlet-name>
+        <servlet-name>ToDoServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -21,4 +21,19 @@
         <url-pattern>*.html</url-pattern>
         <url-pattern>*.jpeg</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+        <param-name>jdbcConnectionString</param-name>
+        <param-value>jdbc:mysql://localhost:3306/java_ee_db?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>12345678</param-value>
+    </context-param>
 </web-app>
