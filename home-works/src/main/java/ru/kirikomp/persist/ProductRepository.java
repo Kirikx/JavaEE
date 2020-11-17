@@ -1,15 +1,26 @@
 package ru.kirikomp.persist;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Named
+@ApplicationScoped
 public class ProductRepository {
 
-    private final Connection conn;
+    @Inject
+    private ServletContext context;
 
-    public ProductRepository(Connection conn) throws SQLException {
-        this.conn = conn;
+    private Connection conn;
+
+    @PostConstruct
+    public void init() throws SQLException {
+        this.conn = (Connection) context.getAttribute("jdbcConnection");
         createTableIfNotExists(conn);
     }
 
