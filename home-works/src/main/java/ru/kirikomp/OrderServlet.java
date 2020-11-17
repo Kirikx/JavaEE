@@ -6,18 +6,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/catalog/*")
-public class Catalog extends HttpServlet {
+@WebServlet(urlPatterns = "/order/*")
+public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/page_header").include(req, resp);
 
-        resp.getWriter().println("<h1>Catalog servlet</h1>");
+        resp.getWriter().println("<h1>Order servlet</h1>");
 
-        req.getRequestDispatcher("/static/catalog.jsp").include(req, resp);
+        req.getRequestDispatcher("/static/order.jsp").include(req, resp);
 
     }
 
