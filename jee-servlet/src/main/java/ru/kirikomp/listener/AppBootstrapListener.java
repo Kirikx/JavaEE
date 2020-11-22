@@ -33,14 +33,6 @@ public class AppBootstrapListener implements ServletContextListener {
             Connection connection = DriverManager.getConnection(jdbcConnectionString, username, password);
             sc.setAttribute("jdbcConnection", connection);
 
-            ToDoRepository toDoRepository = new ToDoRepository(connection);
-            sc.setAttribute("todoRepository", toDoRepository);
-
-            if (toDoRepository.findAll().size() == 0) {
-                toDoRepository.insert(new ToDo(-1L, "First", LocalDate.now()));
-                toDoRepository.insert(new ToDo(-1L, "Second", LocalDate.now().plusDays(1)));
-                toDoRepository.insert(new ToDo(-1L, "Third", LocalDate.now().plusDays(2)));
-            }
         } catch (SQLException ex) {
             logger.error("Can`t initialize JDBC connection", ex);
         }

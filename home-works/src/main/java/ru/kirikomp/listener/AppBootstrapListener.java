@@ -31,20 +31,20 @@ public class AppBootstrapListener implements ServletContextListener {
             Connection connection = DriverManager.getConnection(jdbcConnectionString, username, password);
             sc.setAttribute("jdbcConnection", connection);
 
-            ProductRepository productRepository = new ProductRepository(connection);
-            sc.setAttribute("productRepository", productRepository);
-
-            if (productRepository.findAll().size() == 0) {
-                productRepository.insert(new Product(1L, "Apple", 12L));
-                productRepository.insert(new Product(2L, "Bananas", 13L));
-                productRepository.insert(new Product(3L, "Tomato", 10L));
-                productRepository.insert(new Product(4L, "Yam", 8L));
-                productRepository.insert(new Product(5L, "Pineapple", 7L));
-                productRepository.insert(new Product(6L, "Potato", 11L));
-                productRepository.insert(new Product(7L, "Kiwi", 3L));
-                productRepository.insert(new Product(8L, "Lemon", 2L));
-                productRepository.insert(new Product(9L, "Pear", 13L));
-            }
+//            ProductRepository productRepository = new ProductRepository(connection);
+//            sc.setAttribute("productRepository", productRepository);
+//
+//            if (productRepository.findAll().size() == 0) {
+//                productRepository.insert(new Product(1L, "Apple", 12L));
+//                productRepository.insert(new Product(2L, "Bananas", 13L));
+//                productRepository.insert(new Product(3L, "Tomato", 10L));
+//                productRepository.insert(new Product(4L, "Yam", 8L));
+//                productRepository.insert(new Product(5L, "Pineapple", 7L));
+//                productRepository.insert(new Product(6L, "Potato", 11L));
+//                productRepository.insert(new Product(7L, "Kiwi", 3L));
+//                productRepository.insert(new Product(8L, "Lemon", 2L));
+//                productRepository.insert(new Product(9L, "Pear", 13L));
+//            }
         } catch (SQLException ex) {
             logger.error("Can`t initialize JDBC connection", ex);
         }
