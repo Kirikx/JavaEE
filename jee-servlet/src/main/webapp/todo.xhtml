@@ -38,6 +38,7 @@
                         <h:inputText styleClass="form-control" id="description"
                                      value="#{todoController.todo.description}"
                                      placeholder="Enter description"/>
+                        <h:message for="description" style="color: red" />
                     </div>
                     <div class="form-group">
                         <label>Target date</label>
@@ -46,7 +47,20 @@
                                      value="#{todoController.todo.targetDate}">
                             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                         </h:inputText>
+                        <h:message for="targetDate" style="color: red" />
+                    </div>
 
+                    <div class="form-group">
+                        <label>Category</label>
+                        <h:outputLabel value="Category"/>
+                        <h:selectOneListbox size="1" styleClass="form-control" id="todoCategory"
+                                            value="#{todoController}">
+                            <f:selectItems value="#{todoController.allCategories()}"
+                                           var="cat"
+                                           itemValue="#{cat.id}"
+                                           itemLabel="#{cat.name}"
+                                           itemLabelEscaped="true"/>
+                        </h:selectOneListbox>
                     </div>
 
                     <h:commandButton value="Submit" styleClass="btn btn-primary" action="#{todoController.saveTodo()}"/>

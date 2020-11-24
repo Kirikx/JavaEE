@@ -1,15 +1,35 @@
 package ru.kirikomp.persist;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
+    @Column(name = "title", nullable = false)
     private String title;
+
+    @NotNull
+    @Column(name = "cost", nullable = false)
     private Long cost;
 
-    public Product(Long id, String title, Long cost) {
-        this.id = id;
-        this.title = title;
-        this.cost = cost;
-    }
+    @ManyToOne
+    private Category category;
+
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<OrderItem> orderItems;
 
     public Product() {
 
@@ -37,5 +57,21 @@ public class Product {
 
     public void setCost(Long cost) {
         this.cost = cost;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

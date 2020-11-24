@@ -27,6 +27,9 @@
                     <a class="nav-link" href="products.xhtml">Catalog</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="categories.xhtml">Categories</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.xhtml">Cart</a>
                 </li>
                 <li class="nav-item">
@@ -47,13 +50,27 @@
                         <h:inputText styleClass="form-control" id="title"
                                      value="#{productController.product.title}"
                                      placeholder="Enter title"/>
+                        <h:message for="title" style="color: red" />
                     </div>
                     <div class="form-group">
-                        <label>Target date</label>
-                        <h:outputLabel value="Target date"/>
+                        <label>Cost</label>
+                        <h:outputLabel value="Cost"/>
                         <h:inputText p:type="number" styleClass="form-control" id="cost"
                                      value="#{productController.product.cost}"/>
+                        <h:message for="cost" style="color: red" />
+                    </div>
 
+                    <div class="form-group">
+                        <label>Category</label>
+                        <h:outputLabel value="Category"/>
+                        <h:selectOneListbox size="1" styleClass="form-control" id="todoCategory"
+                                            value="#{productController}">
+                            <f:selectItems value="#{productController.allCategories()}"
+                                           var="cat"
+                                           itemValue="#{cat.id}"
+                                           itemLabel="#{cat.name}"
+                                           itemLabelEscaped="true"/>
+                        </h:selectOneListbox>
                     </div>
 
                     <h:commandButton value="Submit" styleClass="btn btn-primary" action="#{productController.save()}"/>
