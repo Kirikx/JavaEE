@@ -2,7 +2,6 @@ package ru.kirikomp.controller;
 
 import ru.kirikomp.persist.Category;
 import ru.kirikomp.persist.CategoryRepository;
-import ru.kirikomp.persist.Product;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;

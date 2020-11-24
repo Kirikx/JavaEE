@@ -1,10 +1,8 @@
 package ru.kirikomp.persist;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "order_item")

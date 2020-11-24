@@ -9,11 +9,6 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:/jboss/datasources/MySQLDS</jta-data-source>
         <properties>
-<!--            <property name="javax.persistence.jdbc.url"-->
-<!--                      value="jdbc:mysql://localhost:3306/javaee_test_db?createDatabaseIfNotExist=true&characterEncoding=UTF-8"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="root"/>-->
-<!--            <property name="javax.persistence.jdbc.password" value="12345678"/>-->
-<!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
 

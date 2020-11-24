@@ -1,9 +1,6 @@
 package ru.kirikomp.persist;
 
 
-
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
