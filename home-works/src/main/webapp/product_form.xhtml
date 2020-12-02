@@ -30,7 +30,7 @@
                     <a class="nav-link" href="categories.xhtml">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.xhtml">Cart</a>
+                    <a class="nav-link" href="cart.xhtml">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.xhtml">Order</a>
@@ -63,8 +63,8 @@
                     <div class="form-group">
                         <label>Category</label>
                         <h:outputLabel value="Category"/>
-                        <h:selectOneListbox size="1" styleClass="form-control" id="todoCategory"
-                                            value="#{productController}">
+                        <h:selectOneListbox size="1" styleClass="form-control" id="сategory"
+                                            value="#{productController.product.categoryId}">
                             <f:selectItems value="#{productController.allCategories()}"
                                            var="cat"
                                            itemValue="#{cat.id}"

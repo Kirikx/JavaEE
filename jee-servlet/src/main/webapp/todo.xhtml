@@ -54,7 +54,7 @@
                         <label>Category</label>
                         <h:outputLabel value="Category"/>
                         <h:selectOneListbox size="1" styleClass="form-control" id="todoCategory"
-                                            value="#{todoController}">
+                                            value="#{todoController.todo.categoryId}">
                             <f:selectItems value="#{todoController.allCategories()}"
                                            var="cat"
                                            itemValue="#{cat.id}"

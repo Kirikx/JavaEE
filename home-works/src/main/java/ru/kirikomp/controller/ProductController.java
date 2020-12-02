@@ -1,9 +1,9 @@
 package ru.kirikomp.controller;
 
+import ru.kirikomp.dto.ProductDto;
 import ru.kirikomp.persist.Category;
 import ru.kirikomp.persist.CategoryRepository;
-import ru.kirikomp.persist.Product;
-import ru.kirikomp.persist.ProductRepository;
+import ru.kirikomp.service.ProductServiceLocal;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
@@ -18,54 +18,54 @@ import java.util.List;
 public class ProductController implements Serializable {
 
     @Inject
-    private ProductRepository productRepository;
+    private ProductServiceLocal productServiceLocal;
 
     @Inject
     private CategoryRepository categoryRepository;
 
-    private Product product;
+    private ProductDto product;
 
-    private List<Product> products;
+    private List<ProductDto> products;
 
     private List<Category> categories;
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        this.products = productRepository.findAll();
+        this.products = productServiceLocal.findAll();
         this.categories = categoryRepository.findAll();
     }
 
-    public List<Product> getAll() throws SQLException {
+    public List<ProductDto> getAll() throws SQLException {
         return products;
     }
 
-    public Product getProduct() {
+    public ProductDto getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDto product) {
         this.product = product;
     }
 
-    public String edit(Product product) {
+    public String edit(ProductDto product) {
         this.product = product;
         return "/product_form.xhtml?faces-redirect=true";
     }
 
-    public void delete(Product todo) throws SQLException {
-        productRepository.delete(todo.getId());
+    public void delete(ProductDto todo) throws SQLException {
+        productServiceLocal.delete(todo.getId());
     }
 
     public String save() throws SQLException {
         if (this.product.getId() == null) {
-            productRepository.insert(product);
+            productServiceLocal.insert(product);
         } else {
-            productRepository.update(product);
+            productServiceLocal.update(product);
         }
         return "/products.xhtml?faces-redirect=true";
     }
 
     public String create() {
-        this.product = new Product();
+        this.product = new ProductDto();
         return "/product_form.xhtml?faces-redirect=true";
     }
 
