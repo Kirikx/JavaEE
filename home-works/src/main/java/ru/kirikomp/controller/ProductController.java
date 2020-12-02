@@ -1,9 +1,12 @@
 package ru.kirikomp.controller;
 
+import ru.kirikomp.persist.Category;
+import ru.kirikomp.persist.CategoryRepository;
 import ru.kirikomp.persist.Product;
 import ru.kirikomp.persist.ProductRepository;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -17,10 +20,22 @@ public class ProductController implements Serializable {
     @Inject
     private ProductRepository productRepository;
 
+    @Inject
+    private CategoryRepository categoryRepository;
+
     private Product product;
 
+    private List<Product> products;
+
+    private List<Category> categories;
+
+    public void preloadData(ComponentSystemEvent componentSystemEvent) {
+        this.products = productRepository.findAll();
+        this.categories = categoryRepository.findAll();
+    }
+
     public List<Product> getAll() throws SQLException {
-        return productRepository.findAll();
+        return products;
     }
 
     public Product getProduct() {
@@ -31,13 +46,13 @@ public class ProductController implements Serializable {
         this.product = product;
     }
 
-    public String edit(Product todo) {
-        this.product = todo;
+    public String edit(Product product) {
+        this.product = product;
         return "/product_form.xhtml?faces-redirect=true";
     }
 
     public void delete(Product todo) throws SQLException {
-        productRepository.deleteById(todo.getId());
+        productRepository.delete(todo.getId());
     }
 
     public String save() throws SQLException {
@@ -52,5 +67,9 @@ public class ProductController implements Serializable {
     public String create() {
         this.product = new Product();
         return "/product_form.xhtml?faces-redirect=true";
+    }
+
+    public List<Category> allCategories() {
+        return categories;
     }
 }
