@@ -64,10 +64,10 @@
                                              action="#{todoController.deleteTodo(todo)}">
                                 <f:ajax event="click" render="toDoForm"/>
                             </h:commandButton>
-                            <h:commandButton value="Add to cart" styleClass="btn btn-success"
-                                             action="#{cartController.add(todo)}">
-                                <f:ajax event="click" render="toDoForm"/>
-                            </h:commandButton>
+                            <!--                            <h:commandButton value="Add to cart" styleClass="btn btn-success"-->
+                            <!--                                             action="#{toDoCartController.add(todo)}">-->
+                            <!--                                <f:ajax event="click" render="toDoForm"/>-->
+                            <!--                            </h:commandButton>-->
                         </h:column>
                     </h:dataTable>
                 </div>

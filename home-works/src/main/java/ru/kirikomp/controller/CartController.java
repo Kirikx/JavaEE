@@ -25,7 +25,7 @@ public class CartController implements Serializable {
         cartService.add(productDto);
     }
 
-    public void delete(ProductDto productDto) {
-        cartService.delete(productDto);
+    public void delete(OrderItem orderItem) {
+        cartService.delete(orderItem);
     }
 }

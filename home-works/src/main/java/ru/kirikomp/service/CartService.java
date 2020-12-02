@@ -23,20 +23,25 @@ public class CartService implements Serializable {
     }
 
     public void add(ProductDto productDto) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setProduct(productRepository.findById(productDto.getId()));
+        OrderItem orderItem = null;
         for (OrderItem item : orderItems) {
             if (item.getProduct() != null && item.getProduct().getId().equals(productDto.getId())) {
+                item.setCount(item.getCount() + 1L);
                 orderItem = item;
             }
         }
-        orderItem.setCount(orderItem.getCount() + 1);
+        if (orderItem == null) {
+            orderItem = new OrderItem();
+            orderItem.setProduct(productRepository.findById(productDto.getId()));
+            orderItem.setCount(1L);
+            orderItems.add(orderItem);
+        }
     }
 
-    public void delete(ProductDto productDto) {
+    public void delete(OrderItem orderItem) {
         List<OrderItem> newList = new ArrayList<>();
         for (OrderItem item : orderItems) {
-            if (!item.getProduct().getId().equals(productDto.getId())) {
+            if (!item.getProduct().getId().equals(orderItem.getProduct().getId())) {
                 newList.add(item);
             }
         }

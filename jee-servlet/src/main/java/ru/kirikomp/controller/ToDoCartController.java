@@ -1,19 +1,18 @@
 package ru.kirikomp.controller;
 
-import ru.kirikomp.service.CartService;
+import ru.kirikomp.service.ToDoCartService;
 import ru.kirikomp.service.ToDoRepr;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
 @SessionScoped
-public class CartController implements Serializable {
+public class ToDoCartController implements Serializable {
 
-    @EJB
-    private CartService cartService;
+    //    @EJB
+    private ToDoCartService cartService;
 
     // TODO дописать контроллер и создать представление для корзины
 
