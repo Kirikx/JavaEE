@@ -31,7 +31,7 @@
                     <a class="nav-link" href="categories.xhtml">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.xhtml">Cart</a>
+                    <a class="nav-link" href="cart.xhtml">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.xhtml">Order</a>
@@ -65,7 +65,7 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">Category</f:facet>
-                            #{empty product.category ? "no category" : product.category.name}
+                            #{empty product.categoryName ? "no category" : product.categoryName}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Action</f:facet>
@@ -76,7 +76,10 @@
                                              action="#{productController.delete(product)}">
                                 <f:ajax event="click" render="productForm"/>
                             </h:commandButton>
-
+                            <h:commandButton value="Add to cart" styleClass="btn btn-success"
+                                             action="#{cartController.add(product)}">
+                                <f:ajax event="click" render="productForm"/>
+                            </h:commandButton>
                         </h:column>
                     </h:dataTable>
                 </div>

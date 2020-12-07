@@ -1,42 +1,18 @@
 package ru.kirikomp.persist;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import javax.ejb.Local;
 import java.util.List;
 
-@Named
-@ApplicationScoped
-public class ToDoCategoryRepository {
+@Local
+public interface ToDoCategoryRepository {
 
-    @PersistenceContext(unitName = "ds")
-    private EntityManager em;
+    void insert(ToDoCategory toDoCategory);
 
-    @Transactional
-    public void insert(ToDoCategory toDoCategory) {
-        em.persist(toDoCategory);
-    }
+    void update(ToDoCategory toDoCategory);
 
-    @Transactional
-    public void update(ToDoCategory toDoCategory) {
-        em.merge(toDoCategory);
-    }
+    void delete(Long id);
 
-    @Transactional
-    public void delete(Long id) {
-        ToDoCategory toDoCategory = em.find(ToDoCategory.class, id);
-        if (toDoCategory != null) {
-            em.remove(toDoCategory);
-        }
-    }
+    ToDoCategory findById(Long id);
 
-    public ToDoCategory findById(Long id) {
-        return em.find(ToDoCategory.class, id);
-    }
-
-    public List<ToDoCategory> findAll() {
-        return em.createQuery("from ToDoCategory ", ToDoCategory.class).getResultList();
-    }
+    public List<ToDoCategory> findAll();
 }

@@ -1,8 +1,6 @@
 package ru.kirikomp.persist;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -13,11 +11,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @Column(name = "title", nullable = false)
     private String title;
 
-    @NotNull
     @Column(name = "cost", nullable = false)
     private Long cost;
 
@@ -26,13 +22,19 @@ public class Product {
 
     @OneToMany(
             mappedBy = "product",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     private List<OrderItem> orderItems;
 
     public Product() {
 
+    }
+
+    public Product(Long id, String title, Long cost, Category category) {
+        this.id = id;
+        this.title = title;
+        this.cost = cost;
+        this.category = category;
     }
 
     public Long getId() {

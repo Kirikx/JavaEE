@@ -1,42 +1,24 @@
 package ru.kirikomp.persist;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import ru.kirikomp.service.ToDoRepr;
+
+import javax.ejb.Local;
 import java.util.List;
 
-@Named
-@ApplicationScoped
-public class ToDoRepository {
+@Local
+public interface ToDoRepository {
 
-    @PersistenceContext(unitName = "ds")
-    private EntityManager em;
+    void insert(ToDo toDo);
 
-    @Transactional
-    public void insert(ToDo toDo) {
-        em.persist(toDo);
-    }
+    void update(ToDo toDo);
 
-    @Transactional
-    public void update(ToDo toDo) {
-        em.merge(toDo);
-    }
+    void delete(Long id);
 
-    @Transactional
-    public void delete(Long id) {
-        ToDo toDo = em.find(ToDo.class, id);
-        if (toDo != null) {
-            em.remove(toDo);
-        }
-    }
+    ToDo findById(Long id);
 
-    public ToDo findById(Long id) {
-        return em.find(ToDo.class, id);
-    }
+    List<ToDo> findAll();
 
-    public List<ToDo> findAll() {
-        return em.createQuery("from ToDo", ToDo.class).getResultList();
-    }
+    ToDoRepr findToDoReprById(long id);
+
+    List<ToDoRepr> findAllToDoRepr();
 }

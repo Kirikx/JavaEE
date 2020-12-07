@@ -4,7 +4,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:include src="WEB-INF/views/fragments/head.xhtml">
-    <ui:param name="title" value="Product List"/>
+    <ui:param name="title" value="Cart"/>
 </ui:include>
 
 <h:body>
@@ -29,7 +29,7 @@
                     <a class="nav-link" href="categories.xhtml">Categories</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.xhtml">Cart</a>
+                    <a class="nav-link" href="cart.xhtml">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.xhtml">Order</a>
@@ -40,7 +40,28 @@
 
     <div class="container">
         <div class="row py-2">
-            <h2>todo Cart</h2>
+            <h:form id="cartForm" styleClass="col-12">
+                <div class="col-12">
+                    <h:dataTable value="#{cartController.all}" var="orderItem"
+                                 styleClass="table table-bordered my-2">
+                        <h:column>
+                            <f:facet name="header">Title</f:facet>
+                            #{orderItem.product.title}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Count</f:facet>
+                            #{orderItem.count}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Action</f:facet>
+                            <h:commandButton value="Delete" styleClass="btn btn-danger"
+                                             action="#{cartController.delete(orderItem)}">
+                                <f:ajax event="click" render="cartForm"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:form>
         </div>
     </div>
 
