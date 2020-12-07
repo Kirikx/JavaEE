@@ -1,0 +1,29 @@
+GET  localhost:8080/home-works/api/v1/product/all
+
+###
+
+GET  localhost:8080/home-works/api/v1/product/10
+
+###
+
+POST localhost:8080/home-works/api/v1/product
+Content-Type: application/json
+
+{
+  "categoryId": 2,
+  "categoryName": "Фрукты",
+  "cost": 10,
+  "title": "Finic"
+}
+
+###
+
+PUT localhost:8080/home-works/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 10,
+  "categoryId": 2,
+  "cost": 10,
+  "title": "Finic"
+}

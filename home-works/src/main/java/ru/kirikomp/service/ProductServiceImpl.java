@@ -8,6 +8,7 @@ import ru.kirikomp.persist.Category;
 import ru.kirikomp.persist.CategoryRepository;
 import ru.kirikomp.persist.Product;
 import ru.kirikomp.persist.ProductRepository;
+import ru.kirikomp.rest.ProductServiceRs;
 
 import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal {
+public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
