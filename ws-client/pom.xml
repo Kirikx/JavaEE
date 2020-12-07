@@ -37,7 +37,9 @@
                         </goals>
                         <configuration>
                             <wsdlUrls>
-                                <wsdlUrl>http://localhost:8080/jee-servlet/ToDoService/ToDoServiceImpl?wsdl</wsdlUrl>
+                                <!--                                <wsdlUrl>http://localhost:8080/jee-servlet/ToDoService/ToDoServiceImpl?wsdl</wsdlUrl>-->
+                                <wsdlUrl>http://localhost:8080/home-works/ProductService/ProductServiceImpl?wsdl
+                                </wsdlUrl>
                             </wsdlUrls>
                         </configuration>
                     </execution>

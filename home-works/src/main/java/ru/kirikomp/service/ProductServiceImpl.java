@@ -15,11 +15,13 @@ import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs {
+@WebService(endpointInterface = "ru.kirikomp.service.ProductServiceWs", serviceName = "ProductService")
+public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs, ProductServiceWs {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
