@@ -1,0 +1,29 @@
+GET localhost:8080/jee-servlet/api/v1/todo/all
+
+###
+
+GET localhost:8080/jee-servlet/api/v1/todo/30
+
+###
+
+POST localhost:8080/jee-servlet/api/v1/todo
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "categoryName": "Homework",
+  "description": "Voody",
+  "targetDate": "2020-12-15"
+}
+
+###
+
+PUT localhost:8080/jee-servlet/api/v1/todo
+Content-Type: application/json
+
+{
+  "id": 30,
+  "categoryId": 2,
+  "description": "Voody",
+  "targetDate": "2020-12-15"
+}

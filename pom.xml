@@ -13,6 +13,8 @@
         <module>jee-servlet</module>
         <module>home-works</module>
         <module>ejb-client</module>
+        <module>ws-client</module>
+        <module>rest-client</module>
     </modules>
 
 

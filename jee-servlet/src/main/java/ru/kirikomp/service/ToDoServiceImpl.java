@@ -6,17 +6,20 @@ import ru.kirikomp.persist.ToDo;
 import ru.kirikomp.persist.ToDoCategory;
 import ru.kirikomp.persist.ToDoCategoryRepository;
 import ru.kirikomp.persist.ToDoRepository;
+import ru.kirikomp.rest.ToDoServiceRs;
 
 import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ToDoServiceImpl implements ToDoServiceLocal, ToDoServiceRemote {
+@WebService(endpointInterface = "ru.kirikomp.service.ToDoServiceWs", serviceName = "ToDoService")
+public class ToDoServiceImpl implements ToDoServiceLocal, ToDoServiceRemote, ToDoServiceWs, ToDoServiceRs {
 
     private static final Logger logger = LoggerFactory.getLogger(ToDoServiceImpl.class);
 

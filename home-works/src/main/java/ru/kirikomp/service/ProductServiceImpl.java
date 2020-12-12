@@ -8,17 +8,20 @@ import ru.kirikomp.persist.Category;
 import ru.kirikomp.persist.CategoryRepository;
 import ru.kirikomp.persist.Product;
 import ru.kirikomp.persist.ProductRepository;
+import ru.kirikomp.rest.ProductServiceRs;
 
 import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal {
+@WebService(endpointInterface = "ru.kirikomp.service.ProductServiceWs", serviceName = "ProductService")
+public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs, ProductServiceWs {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
