@@ -23,7 +23,8 @@ public class ToDoCategory {
     )
     private List<ToDo> todos;
 
-    public ToDoCategory() {
+    public ToDoCategory(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
